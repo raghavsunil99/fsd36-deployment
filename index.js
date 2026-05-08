@@ -1,17 +1,23 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
 
 const cors = require("cors");
 
 require("dotenv").config();
 
-const connectDB = require("./config/db");
+// const connectDB = require("./config/db");
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log("DB Connected"));
+
 const authRoutes = require("./routes/authRoutes");
 
 app.use(express.json());
-app.use(cors({
-  origin:"http://localhost:5173"
-}));
+app.use(cors());
+
+// app.use(cors({
+//   origin:"http://localhost:5173"
+// }));
 
 connectDB();
 
