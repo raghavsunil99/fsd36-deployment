@@ -13,11 +13,11 @@ mongoose.connect(process.env.MONGO_URL)
 const authRoutes = require("./routes/authRoutes");
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
-// app.use(cors({
-//   origin:"http://localhost:5173"
-// }));
+app.use(cors({
+  origin:"http://localhost:5173"
+}));
 
 // connectDB();
 
